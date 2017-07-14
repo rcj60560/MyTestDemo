@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import test.demo.luocj.com.myapplication.R;
 import test.demo.luocj.com.myapplication.activity.ButtonDialogActivity;
 import test.demo.luocj.com.myapplication.activity.ComplexRecyclerView;
+import test.demo.luocj.com.myapplication.activity.OkGOActivity;
+import test.demo.luocj.com.myapplication.activity.RecyclerviewActivity;
 import test.demo.luocj.com.myapplication.activity.XRecyclerViewActivity;
 
 /**
@@ -60,6 +62,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.Holder> {
                     case 2:
                         mContext.startActivity(new Intent(mContext, ComplexRecyclerView.class));
                         break;
+
+                    case 3:
+                        mContext.startActivity(new Intent(mContext, RecyclerviewActivity.class));
+//                        mContext.startActivity(new Intent(mContext, TestActivity.class));
+                        break;
+                    case 4:
+                        mContext.startActivity(new Intent(mContext,OkGOActivity.class));
+
+
                     default:
                         break;
                 }

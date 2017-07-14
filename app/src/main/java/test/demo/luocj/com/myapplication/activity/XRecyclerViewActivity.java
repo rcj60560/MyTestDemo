@@ -1,12 +1,14 @@
 package test.demo.luocj.com.myapplication.activity;
 
 import android.content.Context;
-import android.icu.text.StringSearch;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.MotionEvent;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -28,6 +30,7 @@ public class XRecyclerViewActivity extends AppCompatActivity {
     private Context mContext;
     private int refreshTime;
     private int times = 0;
+    private String TAG = "TAG";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +60,46 @@ public class XRecyclerViewActivity extends AppCompatActivity {
         mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallSpinFadeLoader);
         mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallRotate);
         mRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
+
+//        mRecyclerView.getChildAt(0).setTag("123");
+//        Log.i(TAG, "initView: " + mRecyclerView.getChildAt(0).getTag().toString());
+
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                if (e.getAction() == 0) {
+
+                    Log.i(TAG, "onInterceptTouchEvent: " + rv.getChildAt(0).getTag());
+                    Log.i(TAG, "onInterceptTouchEvent: " + e.getAction());
+
+                }
+                return true;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+                Log.i(TAG, "onTouchEvent: " + e.toString());
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
 
         mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override

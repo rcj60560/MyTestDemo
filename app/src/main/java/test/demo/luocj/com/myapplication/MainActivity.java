@@ -1,12 +1,10 @@
 package test.demo.luocj.com.myapplication;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import java.util.ArrayList;
 
@@ -33,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         title.add("xrecycleview");
         title.add("底部的dialog");
         title.add("ComplexRecyclerView");
-        title.add("xrecycleview");
-        title.add("xrecycleview");
+        title.add("recycleview");
+        title.add("okgo");
         title.add("xrecycleview");
     }
 

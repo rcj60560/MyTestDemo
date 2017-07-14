@@ -2,6 +2,7 @@ package test.demo.luocj.com.myapplication.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,18 @@ public class XAdapter extends RecyclerView.Adapter<XAdapter.Holder> {
     }
 
     @Override
-    public void onBindViewHolder(XAdapter.Holder holder, int position) {
+    public void onBindViewHolder(final XAdapter.Holder holder, int position) {
         holder.textView.setText(strings.get(position));
+        holder.itemView.setFocusable(true);
+        holder.itemView.setTag(position);
+        holder.itemView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    Log.i("", "onFocusChange: "+view.getTag().toString());
+                }
+            }
+        });
     }
 
     @Override
